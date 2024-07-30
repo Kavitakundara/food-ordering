@@ -3,7 +3,7 @@ const About = () => {
     return (
         <div>
             <h2>About Us Page</h2>
-            <UserClass />
+            <UserClass name = {"Suresh"} age = {20} />
         </div>
     )
 };
