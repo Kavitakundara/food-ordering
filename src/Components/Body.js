@@ -8,9 +8,9 @@ import Col from 'react-bootstrap/Col';
 import resObj from '../utils/mockData';
 import { IoSearch } from "react-icons/io5";
 import Form from 'react-bootstrap/Form';
-
+import useOnlineStatus from '../utils/useOnlineStatus';
 const Body = () => {
-    const [restroList, setRestroList] = useState(resObj); // Initialize with mock data
+    const [restroList, setRestroList] = useState(resObj); // this is a dummy data
     const [searchText, setSearchText] = useState('');
     const [filteredRestroList, setFilteredRestroList] = useState([]);
 
@@ -26,6 +26,8 @@ const Body = () => {
 
             const json = await data.json();
             console.log(json);
+
+            // this is the code which I write but not working
 
             const restaurantCards = json?.data?.cards?.find(card =>
                 card.card.card['@type'] === 'type.googleapis.com/swiggy.presentation.food.v2.RestaurantCollectionV2'
@@ -43,8 +45,9 @@ const Body = () => {
         }
     };
 
+    // this is a function for searching text
     const handleSearch = () => {
-        const filterRestro = restroList.filter((res) => 
+        const filterRestro = restroList.filter((res) =>
             res.info.name.toLowerCase().includes(searchText.toLowerCase())
         );
         setFilteredRestroList(filterRestro);
@@ -54,10 +57,16 @@ const Body = () => {
         setSearchText(e.target.value); // Update searchText state as the user types
     };
 
+    // filter for top rating restaurant
     const filterTopRatingRestro = () => {
         const filteredRestros = restroList.filter((res) => res.info.avgRating > 4);
         setFilteredRestroList(filteredRestros);
     };
+
+    const onlineStatus = useOnlineStatus();
+
+    if (onlineStatus === false)
+         return (<h1>you are offline</h1>);
 
     return (
         <div className="body">
@@ -72,11 +81,15 @@ const Body = () => {
                         value={searchText}
                         onChange={handleChange}
                     />
-                    <IoSearch />
-                    <button type="button" onClick={handleSearch}>Search</button>
+                    <IoSearch onClick={handleSearch} />
+                    {/* <button type="button" >Search</button>s */}
                 </Form.Group>
             </Form>
             <Container>
+
+
+                {/* you have to modifie this map function according to api data */}
+
                 <Row>
                     {filteredRestroList.length > 0 ? (
                         filteredRestroList.map((restaurant) => (
@@ -85,6 +98,7 @@ const Body = () => {
                             </Col>
                         ))
                     ) : (
+                        ///* this restrolist getting dully data form resOB */
                         restroList.map((restaurant) => (
                             <Col key={restaurant.info.id} xs={12} md={6} lg={3}>
                                 <Restro resData={restaurant} />

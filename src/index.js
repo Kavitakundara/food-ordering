@@ -11,6 +11,7 @@ import Error from './Components/Error';  // Add Error component here
 import Contact from './Components/Contact';  // Add Contact component here
 import reportWebVitals from './reportWebVitals';
 import RestroMenue from './Components/RestroMenue';
+import Bodycopy from './Components/Bodycopy';
 
 const appRouter = createBrowserRouter([
   {
@@ -22,6 +23,10 @@ const appRouter = createBrowserRouter([
         element: <Body />,
       },
       {
+        path: "/copy",
+        element: <Bodycopy />,
+      },
+      {
         path: "/about",
         element: <About />,
       },
@@ -30,11 +35,11 @@ const appRouter = createBrowserRouter([
         element: <Contact />,
       },
       {
-        path: "/menu/:Id",  
+        path: "/menu/:Id",
         element: <RestroMenue />,
       },
     ],
-    errorElement: <Error/>
+    errorElement: <Error />
   },
 ]);
 
