@@ -26,6 +26,10 @@ const Body = () => {
 
             const json = await data.json();
             console.log(json);
+console.log("json.data",json.data);
+console.log("json.data.cards",json.data.cards);
+console.log("json.data.cards[0].card",json.data.cards[0].card);
+
 
             // this is the code which I write but not working
 

@@ -4,11 +4,13 @@ import { IoSearch } from "react-icons/io5";
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import resObj from '../utils/mockData';
+import useOnlineStatus from '../utils/useOnlineStatus';
 
 
 const Header = () => {
     const [restroList, setRestroList] = useState(resObj); // Initialize with mock data
     const [searchText, setSearchText] = useState('');
+    const onlineStatus = useOnlineStatus();
     return (
         <header>
             <img src={logo} className="logo" alt="logo" />
@@ -19,7 +21,7 @@ const Header = () => {
                     <Link to ='/about'>About Us</Link></li>
                     <li>Menu</li>
                     <li> <Link to ='/contact'>Contact Us</Link></li>
-                    <li>Cart</li>
+                    <li>online{onlineStatus  ? "🛜" : "❓"}</li>
                 </ul>
             </div>
             <Form>

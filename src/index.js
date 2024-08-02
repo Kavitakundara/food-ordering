@@ -1,17 +1,21 @@
 // index.js
-import React from 'react';
+import React, { lazy, Suspense } from 'react';
 import './App.css';
 import './index.css';
 import ReactDOM from 'react-dom/client';
 import { createBrowserRouter, RouterProvider, useRouteError } from 'react-router-dom';
 import App from './App';
 import Body from './Components/Body';
-import About from './Components/About';
+// import About from './Components/About';
 import Error from './Components/Error';  // Add Error component here
 import Contact from './Components/Contact';  // Add Contact component here
 import reportWebVitals from './reportWebVitals';
 import RestroMenue from './Components/RestroMenue';
 import Bodycopy from './Components/Bodycopy';
+
+
+
+const About = lazy(() => import('./Components/About'));
 
 const appRouter = createBrowserRouter([
   {
@@ -28,7 +32,7 @@ const appRouter = createBrowserRouter([
       },
       {
         path: "/about",
-        element: <About />,
+        element: <Suspense fallback={<h1>Loading...</h1>}><About /></Suspense>,
       },
       {
         path: "/contact",
