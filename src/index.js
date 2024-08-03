@@ -11,8 +11,8 @@ import Error from './Components/Error';  // Add Error component here
 import Contact from './Components/Contact';  // Add Contact component here
 import reportWebVitals from './reportWebVitals';
 import RestroMenue from './Components/RestroMenue';
-import Bodycopy from './Components/Bodycopy';
-
+import Notification from './Components/Notification';
+// import Bodycopy from './Components/Bodycopy';
 
 
 const About = lazy(() => import('./Components/About'));
@@ -26,10 +26,10 @@ const appRouter = createBrowserRouter([
         path: "/",
         element: <Body />,
       },
-      {
-        path: "/copy",
-        element: <Bodycopy />,
-      },
+      // {
+      //   path: "/copy",
+      //   element: <Bodycopy />,
+      // },
       {
         path: "/about",
         element: <Suspense fallback={<h1>Loading...</h1>}><About /></Suspense>,
@@ -41,6 +41,10 @@ const appRouter = createBrowserRouter([
       {
         path: "/menu/:Id",
         element: <RestroMenue />,
+      },
+      {
+        path: "/noti",
+        element: <Notification type="success" msg={"new notification"}/>,
       },
     ],
     errorElement: <Error />

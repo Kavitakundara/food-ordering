@@ -1,8 +1,9 @@
 import logo from './logo.png';
-import Form from 'react-bootstrap/Form';
+// import Form from 'react-bootstrap/Form';
 import { IoSearch } from "react-icons/io5";
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import '../index.css';
 import resObj from '../utils/mockData';
 import useOnlineStatus from '../utils/useOnlineStatus';
 
@@ -12,32 +13,18 @@ const Header = () => {
     const [searchText, setSearchText] = useState('');
     const onlineStatus = useOnlineStatus();
     return (
-        <header>
-            <img src={logo} className="logo" alt="logo" />
-            <div className="nav-items">
-                <ul>
-                    <li>Home</li>
-                    <li>
-                    <Link to ='/about'>About Us</Link></li>
-                    <li>Menu</li>
-                    <li> <Link to ='/contact'>Contact Us</Link></li>
-                    <li>online{onlineStatus  ? "🛜" : "❓"}</li>
+        <header className='flex justify-between'>
+            <img src={logo} className="w-20" alt="logo" />
+            <div className="nav-flex">
+                <ul className='flex p-3'>
+                    <li className='px-3'>Home</li>
+                    <li className='px-3'>
+                        <Link to='/about'>About Us</Link></li>
+                    <li className='px-3'>Menu</li>
+                    <li className='px-3'> <Link to='/contact'>Contact Us</Link></li>
+                    <li className='px-3'>online{onlineStatus ? "🛜" : "❓"}</li>
                 </ul>
             </div>
-            <Form>
-                <Form.Group className="mb-3 mng-form" controlId="exampleForm.ControlInput1">
-                    <Form.Control type="search" placeholder="Search Items..." value={searchText} onChange={(e) => {
-                        searchText = (e.target.value);
-                    }} /> <IoSearch />
-
-                    <button onClick={() => {
-                        const filterRestro = restroList.filter((res) => res.info.name.includes('searchRestro')
-                        );
-                        setSearchText(filterRestro);
-                    }}>Search</button>
-                </Form.Group>
-            </Form>
-
         </header>
     )
 }

@@ -1,4 +1,9 @@
-* {
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+/* * {
   padding: 0px;
   margin: 0px;
 }
@@ -63,4 +68,4 @@ p.card-text h4 {
 
 .card{
   margin-top: 25px;
-}
+} */
