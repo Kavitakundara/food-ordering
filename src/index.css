@@ -2,6 +2,17 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer {
+  .w-76 {
+    width: 76px;
+}
+.h-63{
+  height: 63px !important;
+}
+.no-underline{
+  text-decoration: none;
+}
+}
 
 /* * {
   padding: 0px;

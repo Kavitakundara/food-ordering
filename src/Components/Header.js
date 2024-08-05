@@ -13,16 +13,16 @@ const Header = () => {
     const [searchText, setSearchText] = useState('');
     const onlineStatus = useOnlineStatus();
     return (
-        <header className='flex justify-between'>
-            <img src={logo} className="w-20" alt="logo" />
+        <header className='d-flex justify-content-between bg-black px-2'>
+            <img src={logo} alt="logo" className='w-76 h-63 pt-2'/>
             <div className="nav-flex">
-                <ul className='flex p-3'>
-                    <li className='px-3'>Home</li>
-                    <li className='px-3'>
-                        <Link to='/about'>About Us</Link></li>
-                    <li className='px-3'>Menu</li>
-                    <li className='px-3'> <Link to='/contact'>Contact Us</Link></li>
-                    <li className='px-3'>online{onlineStatus ? "🛜" : "❓"}</li>
+                <ul className='d-flex p-3'>
+                    <li className='px-3  text-white '>Home</li>
+                    <li className='px-3 decoration-0'>
+                        <Link to='/about' className='text-white no-underline'>About Us</Link></li>
+                    <li className='px-3  text-white no-underline'>Menu</li>
+                    <li className='px-3  text-white'> <Link to='/contact' className=' text-white no-underline'>Contact Us</Link></li>
+                    <li className='px-3  text-white'>online{onlineStatus ? "🛜" : "❓"}</li>
                 </ul>
             </div>
         </header>
