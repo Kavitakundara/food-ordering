@@ -1,9 +1,11 @@
 /** @type {import('tailwindcss').Config} */
-module.exports = {
-  content: ["*"],
-  theme: {
-    extend: {},
+export const content = ["./src/**/*.{js,jsx,ts,tsx}"];
+export const theme = {
+  extend: {
+    aspectRatio: {
+      '4/3': '4 / 3',
+    },
   },
-  plugins: [],
-}
+};
+export const plugins = [];
 

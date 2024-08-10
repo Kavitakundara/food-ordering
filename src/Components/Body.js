@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Restro, {promotedLabel} from './Restro';
+import Restro, { promotedLabel } from './Restro';
 import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+import '../index.css';
 // import resObj from '../utils/mockData';
 import { IoSearch } from "react-icons/io5";
 import Form from 'react-bootstrap/Form';
@@ -14,7 +15,7 @@ const Body = () => {
     const [searchText, setSearchText] = useState('');
     const [filteredRestroList, setFilteredRestroList] = useState([]);
 
-    const restroPromoted = promotedLabel(Restro);
+    // const restroPromoted = promotedLabel(Restro);
 
     useEffect(() => {
         fetchData();
@@ -32,7 +33,6 @@ const Body = () => {
 
     };
 
-
     const handleSearch = () => {
         const filterRestro = restroList.filter((res) =>
             res.info.name.toLowerCase().includes(searchText.toLowerCase())
@@ -43,33 +43,32 @@ const Body = () => {
         setSearchText(e.target.value); // Update searchText state as the user types
     };
 
-
     // filter for top rating restaurant
     const filterTopRatingRestro = () => {
         const filteredRestros = restroList.filter((res) => res.info.avgRating > 4);
         setFilteredRestroList(filteredRestros);
     };
 
-
-
     return (
         <div className="body">
-            <Button variant="info" onClick={filterTopRatingRestro}>
-                Top Rating Restro
-            </Button>
-            <Form>
-                <Form.Group className="mb-3 mng-form" controlId="exampleForm.ControlInput1">
-                    <Form.Control
-                        type="search"
-                        placeholder="Search Items..."
-                        value={searchText}
-                        onChange={handleChange}
-                    />
-                    <IoSearch onClick={handleSearch} />
+            <div className="flex p-3 justify-between">
+                <Button variant="info" onClick={filterTopRatingRestro} className="pt-1 h-8 text-white orange!important">
+                    Top Rating Restro
+                </Button>
+                <Form>
+                    <Form.Group className="mb-3 mng-form flex items-center" controlId="exampleForm.ControlInput1">
+                        <Form.Control
+                            type="search"
+                            placeholder="Search Items..."
+                            value={searchText}
+                            onChange={handleChange}
+                        />
+                        <IoSearch onClick={handleSearch} className="bg-black text-white h-8 text-lg" />
 
-                    {/* <button type="button" onClick={handleSearch}>Search</button> */}
-                </Form.Group>
-            </Form>
+                        {/* <button type="button" onClick={handleSearch}>Search</button> */}
+                    </Form.Group>
+                </Form>
+            </div>
             <Container>
                 <Row>
                     {filteredRestroList.length > 0 ? (
