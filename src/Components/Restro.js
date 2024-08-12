@@ -11,7 +11,6 @@ const Restro = (props) => {
         name,
         cloudinaryImageId,
         aggregatedDiscountInfoV3,
-        title,
         costForTwo,
         cuisines,
         locality,

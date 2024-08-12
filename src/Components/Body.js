@@ -69,7 +69,7 @@ const Body = () => {
                     </Form.Group>
                 </Form>
             </div>
-            <Container>
+            <Container className='pt-5 border-t-2'>
                 <Row>
                     {filteredRestroList.length > 0 ? (
                         filteredRestroList.map((restaurant) => (
@@ -78,7 +78,6 @@ const Body = () => {
                             </Col>
                         ))
                     ) : (
-                        ///* this restrolist getting dully data form resOB */
                         restroList.map((restaurant) => (
                             <Col key={restaurant.id} xs={12} md={6} lg={3}>
                                 <Restro resData={restaurant} />

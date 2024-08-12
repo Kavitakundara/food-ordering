@@ -11,6 +11,7 @@ import Error from './Components/Error';  // Add Error component here
 import Contact from './Components/Contact';  // Add Contact component here
 import reportWebVitals from './reportWebVitals';
 import RestroMenue from './Components/RestroMenue';
+import Cart from './Components/Cart';
 import Notification from './Components/Notification';
 // import Bodycopy from './Components/Bodycopy';
 
@@ -43,8 +44,12 @@ const appRouter = createBrowserRouter([
         element: <RestroMenue />,
       },
       {
+        path: "/cart",
+        element: <Cart />,
+      },
+      {
         path: "/noti",
-        element: <Notification type="success" msg={"new notification"}/>,
+        element: <Notification type="success" msg={"new notification"} />,
       },
     ],
     errorElement: <Error />
