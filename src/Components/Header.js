@@ -27,6 +27,7 @@ const Header = () => {
                     <li className='px-3  text-white cursor-pointer'> <Link to='/contact' className=' text-white no-underline'>Contact Us</Link></li>
                     <li><Link to='/cart' className='px-2 py-1 rounded-lg text-white cursor-pointer no-underline shadow-white border'>🛒({cartItems.length})</Link></li>
                     <li className='px-3  text-white cursor-pointer'>Online{onlineStatus ? "🛜" : "❓"}</li>
+                    {console.log(cartItems)};
                     <li className='px-3  text-white cursor-pointer' onClick={() => {
                         btnNamereact === 'login' ? setBtnNamereact("Logout") :
                             setBtnNamereact("login");

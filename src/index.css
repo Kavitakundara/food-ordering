@@ -22,6 +22,15 @@
   .w-img {
     width: 116px;
   }
+
+  .item-img-width {
+    width: 170px;
+  }
+
+  .container-size {
+    width: 90%;
+    margin: 0px auto;
+  }
 }
 
 /* * {
